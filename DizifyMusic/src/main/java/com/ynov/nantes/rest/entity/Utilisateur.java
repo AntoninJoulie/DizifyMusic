@@ -1,6 +1,7 @@
 package com.ynov.nantes.rest.entity;
 
 import javax.persistence.*;
+import java.util.List;
 
 /**
  * Entité Utilisateur
@@ -16,6 +17,12 @@ public class Utilisateur {
 
     private String email;
 
+    @OneToOne(mappedBy = "utilisateur")
+    private Favori favori;
+
+    @OneToMany(mappedBy = "utilisateur")
+    private List<Playlist> playlists;
+
     public Integer getUtilisateurId() {
         return utilisateurId;
     }
@@ -30,5 +37,21 @@ public class Utilisateur {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public Favori getFavori() {
+        return favori;
+    }
+
+    public void setFavori(Favori favori) {
+        this.favori = favori;
+    }
+
+    public List<Playlist> getPlaylists() {
+        return playlists;
+    }
+
+    public void setPlaylists(List<Playlist> playlists) {
+        this.playlists = playlists;
     }
 }

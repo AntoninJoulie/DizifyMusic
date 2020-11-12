@@ -1,15 +1,10 @@
 package com.ynov.nantes.rest.entity;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "playlist")
@@ -21,10 +16,11 @@ public class Playlist {
     private String playlistNom;
 
     @ManyToMany
-    private Set<Titre> titres = new HashSet<>();
+    private List<Titre> titres;
 
     @ManyToOne
-    private Set<Utilisateur> utilisateurs = new HashSet<>();
+    @JoinColumn(name="utilisateurId")
+    private Utilisateur utilisateur;
 
     public Integer getPlaylistId() {
         return playlistId;
@@ -42,19 +38,19 @@ public class Playlist {
         this.playlistNom = playlistNom;
     }
 
-    public Set<Titre> getTitres() {
+    public List<Titre> getTitres() {
         return titres;
     }
 
-    public void setTitres(Set<Titre> titres) {
+    public void setTitres(List<Titre> titres) {
         this.titres = titres;
     }
 
-    public Set<Utilisateur> getUtilisateurs() {
-        return utilisateurs;
+    public Utilisateur getUtilisateur() {
+        return utilisateur;
     }
 
-    public void setUtilisateurs(Set<Utilisateur> utilisateurs) {
-        this.utilisateurs = utilisateurs;
+    public void setUtilisateur(Utilisateur utilisateur) {
+        this.utilisateur = utilisateur;
     }
 }

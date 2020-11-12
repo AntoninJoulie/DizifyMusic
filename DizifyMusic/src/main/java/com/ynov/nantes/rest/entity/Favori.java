@@ -1,15 +1,10 @@
 package com.ynov.nantes.rest.entity;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.OneToOne;
-import javax.persistence.ManyToMany;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "favori")
@@ -18,17 +13,30 @@ public class Favori {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer favoriId;
 
-    @ManyToMany
-    private Set<Artiste> artistes = new HashSet<>();
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(name = "artisteFavori",
+            joinColumns = @JoinColumn(name = "artisteId", referencedColumnName = "artisteId"),
+            inverseJoinColumns = @JoinColumn(name = "favoriId",
+                    referencedColumnName = "favoriId"))
+    private List<Artiste> artistes;
 
-    @ManyToMany
-    private Set<Album> albums = new HashSet<>();
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(name = "albumFavori",
+            joinColumns = @JoinColumn(name = "albumId", referencedColumnName = "albumId"),
+            inverseJoinColumns = @JoinColumn(name = "favoriId",
+                    referencedColumnName = "favoriId"))
+    private List<Album> albums;
 
-    @ManyToMany
-    private Set<Titre> titres = new HashSet<>();
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(name = "titreFavori",
+            joinColumns = @JoinColumn(name = "titreId", referencedColumnName = "titreId"),
+            inverseJoinColumns = @JoinColumn(name = "favoriId",
+                    referencedColumnName = "favoriId"))
+    private List<Titre> titres;
 
     @OneToOne
-    private Set<Utilisateur> utilisateurs = new HashSet<>();
+    @JoinColumn(name = "utilisateurId")
+    private Utilisateur utilisateurs;
 
     public Integer getFavoriId() {
         return favoriId;
@@ -38,35 +46,35 @@ public class Favori {
         this.favoriId = favoriId;
     }
 
-    public Set<Artiste> getArtistes() {
+    public List<Artiste> getArtistes() {
         return artistes;
     }
 
-    public void setArtistes(Set<Artiste> artistes) {
+    public void setArtistes(List<Artiste> artistes) {
         this.artistes = artistes;
     }
 
-    public Set<Album> getAlbums() {
+    public List<Album> getAlbums() {
         return albums;
     }
 
-    public void setAlbums(Set<Album> albums) {
+    public void setAlbums(List<Album> albums) {
         this.albums = albums;
     }
 
-    public Set<Titre> getTitres() {
+    public List<Titre> getTitres() {
         return titres;
     }
 
-    public void setTitres(Set<Titre> titres) {
+    public void setTitres(List<Titre> titres) {
         this.titres = titres;
     }
 
-    public Set<Utilisateur> getUtilisateurs() {
+    public Utilisateur getUtilisateurs() {
         return utilisateurs;
     }
 
-    public void setUtilisateurs(Set<Utilisateur> utilisateurs) {
+    public void setUtilisateurs(Utilisateur utilisateurs) {
         this.utilisateurs = utilisateurs;
     }
 }

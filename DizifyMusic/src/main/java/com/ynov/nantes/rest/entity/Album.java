@@ -3,6 +3,7 @@ package com.ynov.nantes.rest.entity;
 import javax.persistence.*;
 import java.util.Date;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 /**
@@ -22,7 +23,14 @@ public class Album {
     private Date date;
 
     @ManyToOne
-    private Set<Artiste> artiste = new HashSet<>();
+    @JoinColumn(name="artisteId")
+    private Artiste artiste;
+
+    @ManyToMany(mappedBy = "albums")
+    private List<Favori> favoris;
+
+    @OneToMany(mappedBy = "album")
+    private List<Titre> titres;
 
     public Integer getAlbumId() {
         return albumId;
@@ -48,11 +56,27 @@ public class Album {
         this.date = date;
     }
 
-    public Set<Artiste> getArtiste() {
+    public Artiste getArtiste() {
         return artiste;
     }
 
-    public void setArtiste(Set<Artiste> artiste) {
+    public void setArtiste(Artiste artiste) {
         this.artiste = artiste;
+    }
+
+    public List<Favori> getFavoris() {
+        return favoris;
+    }
+
+    public void setFavoris(List<Favori> favoris) {
+        this.favoris = favoris;
+    }
+
+    public List<Titre> getTitres() {
+        return titres;
+    }
+
+    public void setTitres(List<Titre> titres) {
+        this.titres = titres;
     }
 }
