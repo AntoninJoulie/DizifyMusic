@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.Optional;
 
+@RestController
 public class ArtisteController {
 
     private ArtisteRepository artisteRepository;
@@ -20,7 +21,7 @@ public class ArtisteController {
     @ResponseBody
     @RequestMapping(value = "/artiste", method = RequestMethod.GET, params = "artisteNom")
     public List<Artiste> getArtistesByName(@RequestParam(value = "artisteNom", defaultValue = "") String artisteNom) {
-        List<Artiste> artistes = artisteRepository.findByName(artisteNom);
+        List<Artiste> artistes = artisteRepository.findArtisteByName(artisteNom);
         return artistes;
     }
 
@@ -54,7 +55,7 @@ public class ArtisteController {
         return updatedArtiste;
     }
 
-    @DeleteMapping("artiste/{artisteId}")
+    @DeleteMapping("/artiste/{artisteId}")
     void deleteArtisteById(final @PathVariable("artisteId") Integer artisteId) {
         artisteRepository.deleteById(artisteId);
     }

@@ -12,8 +12,8 @@ public interface ArtisteRepository extends JpaRepository<Artiste, Integer> {
      * Recherche un artiste selon son nom
      *
      * @param artisteNom
-     * @return Artiste
+     * @return artiste
      */
-    @Query("SELECT a FROM Artiste a WHERE a.artisteNom LIKE %:artisteNom")
-    public List<Artiste> findByName(@Param("artisteNom") String artisteNom);
+    @Query("SELECT a FROM Artiste a WHERE a.artisteNom LIKE :artisteNom")
+public List<Artiste> findArtisteByName(@Param("artisteNom") String artisteNom);
 }
