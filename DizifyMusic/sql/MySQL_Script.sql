@@ -50,8 +50,6 @@ DROP TABLE IF EXISTS `favori`;
 CREATE TABLE `favori`
 (
     `favoriId` INT(10) NOT NULL AUTO_INCREMENT,
-    `albumNom` VARCHAR(50) NOT NULL,
-    `date` DATE NOT NULL,
     `utilisateurId` INT(10) NOT NULL,
     PRIMARY KEY(`favoriId`),
     FOREIGN KEY (`utilisateurId`) REFERENCES `utilisateur` (`utilisateurId`)
