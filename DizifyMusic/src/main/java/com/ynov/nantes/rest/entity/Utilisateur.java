@@ -13,16 +13,16 @@ import java.util.List;
 public class Utilisateur {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer utilisateurId;
+    private Integer utilisateur_id;
 
     private String email;
 
     public Integer getUtilisateurId() {
-        return utilisateurId;
+        return utilisateur_id;
     }
 
-    public void setUtilisateurId(Integer utilisateurId) {
-        this.utilisateurId = utilisateurId;
+    public void setUtilisateurId(Integer utilisateur_id) {
+        this.utilisateur_id = utilisateur_id;
     }
 
     public String getEmail() {

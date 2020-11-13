@@ -12,42 +12,42 @@ import javax.persistence.*;
 public class Titre {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer titreId;
+    private Integer titre_id;
 
-    private String titreNom;
+    private String titre_nom;
 
-    private Time titreDuree;
+    private Time titre_duree;
 
     @ManyToOne
-    @JoinColumn(name="artisteId")
+    @JoinColumn(name="artiste_id")
     private Artiste artistes;
 
     @ManyToOne
-    @JoinColumn(name="AlbumId")
+    @JoinColumn(name="album_id")
     private Album albums;
 
     public Integer getTitreId() {
-        return titreId;
+        return titre_id;
     }
 
-    public void setTitreId(Integer titreId) {
-        this.titreId = titreId;
+    public void setTitreId(Integer titre_id) {
+        this.titre_id = titre_id;
     }
 
     public String getTitreNom() {
-        return titreNom;
+        return titre_nom;
     }
 
-    public void setTitreNom(String titreNom) {
-        this.titreNom = titreNom;
+    public void setTitreNom(String titre_nom) {
+        this.titre_nom = titre_nom;
     }
 
     public Time getTitreDuree() {
-        return titreDuree;
+        return titre_duree;
     }
 
-    public void setTitreDuree(Time titreDuree) {
-        this.titreDuree = titreDuree;
+    public void setTitreDuree(Time titre_duree) {
+        this.titre_duree = titre_duree;
     }
 
     public Artiste getArtistes() {

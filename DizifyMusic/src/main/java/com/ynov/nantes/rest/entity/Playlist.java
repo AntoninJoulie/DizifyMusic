@@ -11,35 +11,35 @@ import javax.persistence.*;
 public class Playlist {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer playlistId;
+    private Integer playlist_id;
 
-    private String playlistNom;
+    private String playlist_nom;
 
     @ManyToMany(cascade = CascadeType.ALL)
-    @JoinTable(name = "titrePlaylist",
-            joinColumns = @JoinColumn(name = "playlistId", referencedColumnName = "playlistId"),
-            inverseJoinColumns = @JoinColumn(name = "titreId",
-                    referencedColumnName = "titreId"))
+    @JoinTable(name = "titre_playlist",
+            joinColumns = @JoinColumn(name = "playlist_id", referencedColumnName = "playlist_id"),
+            inverseJoinColumns = @JoinColumn(name = "titre_id",
+                    referencedColumnName = "titre_id"))
     private List<Titre> titres;
 
     @ManyToOne
-    @JoinColumn(name="utilisateurId")
+    @JoinColumn(name="utilisateur_id")
     private Utilisateur utilisateur;
 
     public Integer getPlaylistId() {
-        return playlistId;
+        return playlist_id;
     }
 
-    public void setPlaylistId(Integer playlistId) {
-        this.playlistId = playlistId;
+    public void setPlaylistId(Integer playlist_id) {
+        this.playlist_id = playlist_id;
     }
 
     public String getPlaylistNom() {
-        return playlistNom;
+        return playlist_nom;
     }
 
-    public void setPlaylistNom(String playlistNom) {
-        this.playlistNom = playlistNom;
+    public void setPlaylistNom(String playlist_nom) {
+        this.playlist_nom = playlist_nom;
     }
 
     public List<Titre> getTitres() {

@@ -32,10 +32,10 @@ public class ArtisteController {
     }
 
     @ResponseBody
-    @GetMapping("/artiste/{artisteId}")
-    public Artiste getArtisteById(final @PathVariable("artisteId") Integer artisteId) {
+    @GetMapping("/artiste/{artiste_id}")
+    public Artiste getArtisteById(final @PathVariable("artiste_id") Integer artiste_id) {
         try {
-            Optional<Artiste> artiste = artisteRepository.findById(Integer.valueOf(artisteId));
+            Optional<Artiste> artiste = artisteRepository.findById(Integer.valueOf(artiste_id));
             return artiste.get();
         } catch (Exception e) {
             return null;
@@ -49,14 +49,16 @@ public class ArtisteController {
     }
 
     @ResponseBody
-    @PutMapping("/artiste/{artisteId}")
-    public Artiste editArtiste(@RequestBody Artiste artiste) {
-        Artiste updatedArtiste = artisteRepository.save(artiste);
+    @PutMapping("/artiste/{artiste_id}")
+    public Artiste editArtiste(@RequestBody Artiste artiste, @PathVariable("artiste_id") Integer artiste_id) {
+        Artiste updateArtiste = artisteRepository.findById(artiste_id).get();
+        updateArtiste.setArtisteNom(artiste.getArtisteNom());
+        final Artiste updatedArtiste = artisteRepository.save(updateArtiste);
         return updatedArtiste;
     }
 
-    @DeleteMapping("/artiste/{artisteId}")
-    void deleteArtisteById(final @PathVariable("artisteId") Integer artisteId) {
-        artisteRepository.deleteById(artisteId);
+    @DeleteMapping("/artiste/{artiste_id}")
+    void deleteArtisteById(final @PathVariable("artiste_id") Integer artiste_id) {
+        artisteRepository.deleteById(artiste_id);
     }
 }

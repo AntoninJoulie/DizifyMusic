@@ -11,39 +11,39 @@ import javax.persistence.*;
 public class Favori {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer favoriId;
+    private Integer favori_id;
 
     @ManyToMany(cascade = CascadeType.ALL)
-    @JoinTable(name = "artisteFavori",
-            joinColumns = @JoinColumn(name = "favoriId", referencedColumnName = "favoriId"),
-            inverseJoinColumns = @JoinColumn(name = "artisteId",
-                    referencedColumnName = "artisteId"))
+    @JoinTable(name = "artiste_favori",
+            joinColumns = @JoinColumn(name = "favori_id", referencedColumnName = "favori_id"),
+            inverseJoinColumns = @JoinColumn(name = "artiste_id",
+                    referencedColumnName = "artiste_id"))
     private List<Artiste> artistes;
 
     @ManyToMany(cascade = CascadeType.ALL)
-    @JoinTable(name = "albumFavori",
-            joinColumns = @JoinColumn(name = "favoriId", referencedColumnName = "favoriId"),
-            inverseJoinColumns = @JoinColumn(name = "albumId",
-                    referencedColumnName = "albumId"))
+    @JoinTable(name = "album_favori",
+            joinColumns = @JoinColumn(name = "favori_id", referencedColumnName = "favori_id"),
+            inverseJoinColumns = @JoinColumn(name = "album_id",
+                    referencedColumnName = "album_id"))
     private List<Album> albums;
 
     @ManyToMany(cascade = CascadeType.ALL)
-    @JoinTable(name = "titreFavori",
-            joinColumns = @JoinColumn(name = "favoriId", referencedColumnName = "favoriId"),
-            inverseJoinColumns = @JoinColumn(name = "titreId",
-                    referencedColumnName = "titreId"))
+    @JoinTable(name = "titre_favori",
+            joinColumns = @JoinColumn(name = "favori_id", referencedColumnName = "favori_id"),
+            inverseJoinColumns = @JoinColumn(name = "titre_id",
+                    referencedColumnName = "titre_id"))
     private List<Titre> titres;
 
     @OneToOne
-    @JoinColumn(name = "utilisateurId")
+    @JoinColumn(name = "utilisateur_id")
     private Utilisateur utilisateurs;
 
     public Integer getFavoriId() {
-        return favoriId;
+        return favori_id;
     }
 
-    public void setFavoriId(Integer favoriId) {
-        this.favoriId = favoriId;
+    public void setFavoriId(Integer favori_id) {
+        this.favori_id = favori_id;
     }
 
     public List<Artiste> getArtistes() {

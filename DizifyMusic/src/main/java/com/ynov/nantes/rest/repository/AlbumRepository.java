@@ -11,9 +11,9 @@ public interface AlbumRepository extends JpaRepository<Album, Integer> {
     /**
      * Recherche un album selon son nom
      *
-     * @param albumNom
+     * @param album_nom
      * @return album
      */
-    @Query("SELECT a FROM Album a WHERE a.albumNom LIKE :albumNom")
-    public List<Album> findAlbumByName(@Param("albumNom") String albumNom);
+    @Query("SELECT a FROM Album a WHERE a.album_nom LIKE :album_nom")
+    public List<Album> findAlbumByName(@Param("album_nom") String album_nom);
 }

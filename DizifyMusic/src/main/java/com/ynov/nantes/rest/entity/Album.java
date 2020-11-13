@@ -16,30 +16,30 @@ import java.util.Set;
 public class Album {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer albumId;
+    private Integer album_id;
 
-    private String albumNom;
+    private String album_nom;
 
     private Date date;
 
     @ManyToOne
-    @JoinColumn(name="artisteId")
+    @JoinColumn(name="artiste_id")
     private Artiste artiste;
 
     public Integer getAlbumId() {
-        return albumId;
+        return album_id;
     }
 
-    public void setAlbumId(Integer albumId) {
-        this.albumId = albumId;
+    public void setAlbumId(Integer album_id) {
+        this.album_id = album_id;
     }
 
     public String getAlbumNom() {
-        return albumNom;
+        return album_nom;
     }
 
-    public void setAlbumNom(String albumNom) {
-        this.albumNom = albumNom;
+    public void setAlbumNom(String album_nom) {
+        this.album_nom = album_nom;
     }
 
     public Date getDate() {

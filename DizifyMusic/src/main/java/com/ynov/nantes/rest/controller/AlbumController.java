@@ -19,9 +19,9 @@ public class AlbumController {
     }
 
     @ResponseBody
-    @RequestMapping(value = "/album", method = RequestMethod.GET, params = "albumNom")
-    public List<Album> getAlbumsByName(@RequestParam(value = "albumNom", defaultValue = "") String albumNom) {
-        List<Album> albums = albumRepository.findAlbumByName(albumNom);
+    @RequestMapping(value = "/album", method = RequestMethod.GET, params = "album_nom")
+    public List<Album> getAlbumsByName(@RequestParam(value = "album_nom", defaultValue = "") String album_nom) {
+        List<Album> albums = albumRepository.findAlbumByName(album_nom);
         return albums;
     }
 
@@ -32,32 +32,32 @@ public class AlbumController {
     }
 
     @ResponseBody
-    @GetMapping("/album/{albumId}")
-    public Album getAlbumById(final @PathVariable("albumId") Integer albumId) {
+    @GetMapping("/album/{album_id}")
+    public Album getAlbumById(final @PathVariable("album_id") Integer album_id) {
         try {
-            Optional<Album> album = albumRepository.findById(Integer.valueOf(albumId));
+            Optional<Album> album = albumRepository.findById(Integer.valueOf(album_id));
             return album.get();
         } catch (Exception e) {
             return null;
         }
     }
 
-    @PostMapping
+    @PostMapping("/album")
     public Album addAlbum(@RequestBody Album album) {
         Album addedAlbum = albumRepository.save(album);
         return addedAlbum;
     }
 
     @ResponseBody
-    @PutMapping("/album/{albumId}")
-    public Album editArtiste(@RequestBody Album album) {
+    @PutMapping("/album/{album_id}")
+    public Album editAlbum(@RequestBody Album album) {
         Album updatedAlbum= albumRepository.save(album);
         return updatedAlbum;
     }
 
-    @DeleteMapping("/album/{albumId}")
-    void deleteAlbumById(final @PathVariable("albumId") Integer albumId) {
-        albumRepository.deleteById(albumId);
+    @DeleteMapping("/album/{album_id}")
+    void deleteAlbumById(final @PathVariable("album_id") Integer album_id) {
+        albumRepository.deleteById(album_id);
     }
 
 }

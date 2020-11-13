@@ -12,16 +12,16 @@ import javax.persistence.*;
 public class Administrateur {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer adminId;
+    private Integer admin_id;
 
     private String email;
 
     public Integer getAdminId() {
-        return adminId;
+        return admin_id;
     }
 
-    public void setAdminId(Integer adminId) {
-        this.adminId = adminId;
+    public void setAdminId(Integer admin_id) {
+        this.admin_id = admin_id;
     }
 
     public String getEmail() {

@@ -13,23 +13,23 @@ import java.util.List;
 public class Artiste {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer artisteId;
+    private Integer artiste_id;
 
-    private String artisteNom;
+    private String artiste_nom;
 
     public Integer getArtisteId() {
-        return artisteId;
+        return artiste_id;
     }
 
-    public void setArtisteId(Integer artisteId) {
-        this.artisteId = artisteId;
+    public void setArtisteId(Integer artiste_id) {
+        this.artiste_id = artiste_id;
     }
 
     public String getArtisteNom() {
-        return artisteNom;
+        return artiste_nom;
     }
 
-    public void setArtisteNom(String artisteNom) {
-        this.artisteNom = artisteNom;
+    public void setArtisteNom(String artiste_nom) {
+        this.artiste_nom = artiste_nom;
     }
 }

@@ -1,106 +1,106 @@
 DROP TABLE IF EXISTS `administrateur`;
 CREATE TABLE `administrateur`
 (
-    `adminId` INT(10) NOT NULL AUTO_INCREMENT,
+    `admin_id` INT(10) NOT NULL AUTO_INCREMENT,
     `email` VARCHAR(50) NOT NULL,
-    PRIMARY KEY(`adminId`)
+    PRIMARY KEY(`admin_id`)
 ) ENGINE=INNODB CHARACTER SET utf8 COLLATE utf8_general_ci;
 
 DROP TABLE IF EXISTS `artiste`;
 CREATE TABLE `artiste`
 (
-    `artisteId` INT(10) NOT NULL AUTO_INCREMENT,
-    `artisteNom` VARCHAR(50) NOT NULL,
-    PRIMARY KEY(`artisteId`)
+    `artiste_id` INT(10) NOT NULL AUTO_INCREMENT,
+    `artiste_nom` VARCHAR(50) NOT NULL,
+    PRIMARY KEY(`artiste_id`)
 ) ENGINE=INNODB CHARACTER SET utf8 COLLATE utf8_general_ci;
 
 DROP TABLE IF EXISTS `album`;
 CREATE TABLE `album`
 (
-    `albumId` INT(10) NOT NULL AUTO_INCREMENT,
-    `albumNom` VARCHAR(50) NOT NULL,
+    `album_id` INT(10) NOT NULL AUTO_INCREMENT,
+    `album_nom` VARCHAR(50) NOT NULL,
     `date` DATE NOT NULL,
-    `artisteId` INT(10) NOT NULL,
-    PRIMARY KEY(`albumId`),
-    FOREIGN KEY (`artisteId`) REFERENCES `artiste` (`artisteId`)
+    `artiste_id` INT(10) NOT NULL,
+    PRIMARY KEY(`album_id`),
+    FOREIGN KEY (`artiste_id`) REFERENCES `artiste` (`artiste_id`)
 ) ENGINE=INNODB CHARACTER SET utf8 COLLATE utf8_general_ci;
 
 DROP TABLE IF EXISTS `titre`;
 CREATE TABLE `titre`
 (
-    `titreId` INT(10) NOT NULL AUTO_INCREMENT,
-    `titreNom` VARCHAR(50) NOT NULL,
+    `titre_id` INT(10) NOT NULL AUTO_INCREMENT,
+    `titre_nom` VARCHAR(50) NOT NULL,
     `duree` TIME NOT NULL,
-    `artisteId` INT(10) NOT NULL,
-    `albumId` INT(10) NOT NULL,
-    PRIMARY KEY(`titreId`),
-    FOREIGN KEY (`artisteId`) REFERENCES `artiste` (`artisteId`),
-    FOREIGN KEY (`albumId`) REFERENCES `album` (`albumId`)
+    `artiste_id` INT(10) NOT NULL,
+    `album_id` INT(10) NOT NULL,
+    PRIMARY KEY(`titre_id`),
+    FOREIGN KEY (`artiste_id`) REFERENCES `artiste` (`artiste_id`),
+    FOREIGN KEY (`album_id`) REFERENCES `album` (`album_id`)
 ) ENGINE=INNODB CHARACTER SET utf8 COLLATE utf8_general_ci;
 
 DROP TABLE IF EXISTS `utilisateur`;
 CREATE TABLE `utilisateur`
 (
-    `utilisateurId` INT(10) NOT NULL AUTO_INCREMENT,
+    `utilisateur_id` INT(10) NOT NULL AUTO_INCREMENT,
     `email` VARCHAR(50) NOT NULL,
-    PRIMARY KEY(`utilisateurId`)
+    PRIMARY KEY(`utilisateur_id`)
 ) ENGINE=INNODB CHARACTER SET utf8 COLLATE utf8_general_ci;
 
 DROP TABLE IF EXISTS `favori`;
 CREATE TABLE `favori`
 (
-    `favoriId` INT(10) NOT NULL AUTO_INCREMENT,
-    `utilisateurId` INT(10) NOT NULL,
-    PRIMARY KEY(`favoriId`),
-    FOREIGN KEY (`utilisateurId`) REFERENCES `utilisateur` (`utilisateurId`)
+    `favori_id` INT(10) NOT NULL AUTO_INCREMENT,
+    `utilisateur_id` INT(10) NOT NULL,
+    PRIMARY KEY(`favori_id`),
+    FOREIGN KEY (`utilisateur_id`) REFERENCES `utilisateur` (`utilisateur_id`)
 ) ENGINE=INNODB CHARACTER SET utf8 COLLATE utf8_general_ci;
 
-DROP TABLE IF EXISTS `artisteFavori`;
-CREATE TABLE `artisteFavori`
+DROP TABLE IF EXISTS `artiste_favori`;
+CREATE TABLE `artist_favori`
 (
-    `favoriId` INT(10) NOT NULL,
-    `artisteId` INT(10) NOT NULL,
-    PRIMARY KEY (`favoriId`, `artisteId`),
-    FOREIGN KEY (`favoriId`) REFERENCES `favori` (`favoriId`),
-    FOREIGN KEY (`artisteId`) REFERENCES `artiste` (`artisteId`)
+    `favori_id` INT(10) NOT NULL,
+    `artiste_id` INT(10) NOT NULL,
+    PRIMARY KEY (`favori_id`, `artiste_id`),
+    FOREIGN KEY (`favori_id`) REFERENCES `favori` (`favori_id`),
+    FOREIGN KEY (`artiste_id`) REFERENCES `artiste` (`artiste_id`)
 ) ENGINE=INNODB CHARACTER SET utf8 COLLATE utf8_general_ci;
 
-DROP TABLE IF EXISTS `albumFavori`;
-CREATE TABLE `albumFavori`
+DROP TABLE IF EXISTS `album_favori`;
+CREATE TABLE `album_favori`
 (
-    `favoriId` INT(10) NOT NULL,
-    `albumId` INT(10) NOT NULL,
-    PRIMARY KEY (`favoriId`, `albumId`),
-    FOREIGN KEY (`favoriId`) REFERENCES `favori` (`favoriId`),
-    FOREIGN KEY (`albumId`) REFERENCES `album` (`albumId`)
+    `favori_id` INT(10) NOT NULL,
+    `album_id` INT(10) NOT NULL,
+    PRIMARY KEY (`favori_id`, `album_id`),
+    FOREIGN KEY (`favori_id`) REFERENCES `favori` (`favori_id`),
+    FOREIGN KEY (`album_id`) REFERENCES `album` (`album_id`)
 ) ENGINE=INNODB CHARACTER SET utf8 COLLATE utf8_general_ci;
 
-DROP TABLE IF EXISTS `titreFavori`;
-CREATE TABLE `titreFavori`
+DROP TABLE IF EXISTS `titre_favori`;
+CREATE TABLE `titre_favori`
 (
-    `favoriId` INT(10) NOT NULL,
-    `titreId` INT(10) NOT NULL,
-    PRIMARY KEY (`favoriId`, `titreId`),
-    FOREIGN KEY (`favoriId`) REFERENCES `favori` (`favoriId`),
-    FOREIGN KEY (`titreId`) REFERENCES `titre` (`titreId`)
+    `favori_id` INT(10) NOT NULL,
+    `titre_id` INT(10) NOT NULL,
+    PRIMARY KEY (`favori_id`, `titre_id`),
+    FOREIGN KEY (`favori_id`) REFERENCES `favori` (`favori_id`),
+    FOREIGN KEY (`titre_id`) REFERENCES `titre` (`titre_id`)
 ) ENGINE=INNODB CHARACTER SET utf8 COLLATE utf8_general_ci;
 
 DROP TABLE IF EXISTS `playlist`;
 CREATE TABLE `playlist`
 (
-    `playlistId` INT(10) NOT NULL AUTO_INCREMENT,
-    `playlistNom` VARCHAR(50) NOT NULL,
-    `utilisateurId` INT(10) NOT NULL,
-    PRIMARY KEY(`playlistId`),
-    FOREIGN KEY (`utilisateurId`) REFERENCES `utilisateur` (`utilisateurId`)
+    `playlist_id` INT(10) NOT NULL AUTO_INCREMENT,
+    `playlist_nom` VARCHAR(50) NOT NULL,
+    `utilisateur_id` INT(10) NOT NULL,
+    PRIMARY KEY(`playlist_id`),
+    FOREIGN KEY (`utilisateur_id`) REFERENCES `utilisateur` (`utilisateur_id`)
 ) ENGINE=INNODB CHARACTER SET utf8 COLLATE utf8_general_ci;
 
-DROP TABLE IF EXISTS `titrePlaylist`;
-CREATE TABLE `titrePlaylist`
+DROP TABLE IF EXISTS `titre_playlist`;
+CREATE TABLE `titre_playlist`
 (
-    `playlistId` INT(10) NOT NULL,
-    `titreId` INT(10) NOT NULL,
-    PRIMARY KEY (`playlistId`, `titreId`),
-    FOREIGN KEY (`playlistId`) REFERENCES `playlist` (`playlistId`),
-    FOREIGN KEY (`titreId`) REFERENCES `titre` (`titreId`)
+    `playlist_id` INT(10) NOT NULL,
+    `titre_id` INT(10) NOT NULL,
+    PRIMARY KEY (`playlist_id`, `titre_id`),
+    FOREIGN KEY (`playlist_id`) REFERENCES `playlist` (`playlist_id`),
+    FOREIGN KEY (`titre_id`) REFERENCES `titre` (`titre_id`)
 ) ENGINE=INNODB CHARACTER SET utf8 COLLATE utf8_general_ci;

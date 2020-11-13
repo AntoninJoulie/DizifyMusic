@@ -27,19 +27,19 @@ public class AdministrateurController {
     }
 
     @ResponseBody
-    @GetMapping("/admin/{adminId}")
-    public Administrateur getAdminById(final @PathVariable("adminId") Integer adminId) {
+    @GetMapping("/admin/{admin_id}")
+    public Administrateur getAdminById(final @PathVariable("admin_id") Integer admin_id) {
         try {
-            Optional<Administrateur> administrateur = administrateurRepository.findById(Integer.valueOf(adminId));
+            Optional<Administrateur> administrateur = administrateurRepository.findById(Integer.valueOf(admin_id));
             return administrateur.get();
         } catch (Exception e) {
             return null;
         }
     }
 
-    @DeleteMapping("/admin/{adminId}")
-    public void deleteAdmin(final @PathVariable("adminId") Integer adminId) {
-        administrateurRepository.deleteById(adminId);
+    @DeleteMapping("/admin/{admin_id}")
+    public void deleteAdmin(final @PathVariable("admin_id") Integer admin_id) {
+        administrateurRepository.deleteById(admin_id);
     }
 
     @GetMapping("/admin")
@@ -53,8 +53,8 @@ public class AdministrateurController {
     }
 
     @ResponseBody
-    @PutMapping("/admin/{adminId}")
-    public Administrateur editAdministrateur(@RequestBody Administrateur administrateur) {
+    @PutMapping("/admin/{admin_id}")
+    public Administrateur editAdministrateur(@RequestBody Administrateur administrateur, @PathVariable(value = "admin_id") Integer admin_id) {
         return administrateurRepository.save(administrateur);
     }
 }
