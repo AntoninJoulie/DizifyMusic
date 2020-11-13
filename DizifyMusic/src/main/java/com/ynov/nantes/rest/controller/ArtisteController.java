@@ -54,9 +54,8 @@ public class ArtisteController {
         return updatedArtiste;
     }
 
-    @ResponseBody
     @DeleteMapping("artiste/{artisteId}")
-    public Artiste deleteArtisteById(final @PathVariable("artisteId") Integer artisteId) {
-        return artisteRepository.deleteById(artisteId);
+    void deleteArtisteById(final @PathVariable("artisteId") Integer artisteId) {
+        artisteRepository.deleteById(artisteId);
     }
 }
