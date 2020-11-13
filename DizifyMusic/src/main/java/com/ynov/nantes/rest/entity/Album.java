@@ -26,12 +26,6 @@ public class Album {
     @JoinColumn(name="artisteId")
     private Artiste artiste;
 
-    @ManyToMany(mappedBy = "albums")
-    private List<Favori> favoris;
-
-    @OneToMany(mappedBy = "album")
-    private List<Titre> titres;
-
     public Integer getAlbumId() {
         return albumId;
     }
@@ -62,21 +56,5 @@ public class Album {
 
     public void setArtiste(Artiste artiste) {
         this.artiste = artiste;
-    }
-
-    public List<Favori> getFavoris() {
-        return favoris;
-    }
-
-    public void setFavoris(List<Favori> favoris) {
-        this.favoris = favoris;
-    }
-
-    public List<Titre> getTitres() {
-        return titres;
-    }
-
-    public void setTitres(List<Titre> titres) {
-        this.titres = titres;
     }
 }

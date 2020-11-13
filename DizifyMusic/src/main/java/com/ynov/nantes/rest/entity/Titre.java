@@ -26,16 +26,6 @@ public class Titre {
     @JoinColumn(name="AlbumId")
     private Album albums;
 
-    @ManyToMany(mappedBy = "titres")
-    private List<Favori> favoris;
-
-    @ManyToMany(cascade = CascadeType.ALL)
-    @JoinTable(name = "playlistTitre",
-            joinColumns = @JoinColumn(name = "playlistId", referencedColumnName = "playlistId"),
-            inverseJoinColumns = @JoinColumn(name = "TitreId",
-                    referencedColumnName = "TitreId"))
-    private List<Playlist> playlists;
-
     public Integer getTitreId() {
         return titreId;
     }
@@ -74,21 +64,5 @@ public class Titre {
 
     public void setAlbums(Album albums) {
         this.albums = albums;
-    }
-
-    public List<Favori> getFavoris() {
-        return favoris;
-    }
-
-    public void setFavoris(List<Favori> favoris) {
-        this.favoris = favoris;
-    }
-
-    public List<Playlist> getPlaylists() {
-        return playlists;
-    }
-
-    public void setPlaylists(List<Playlist> playlists) {
-        this.playlists = playlists;
     }
 }

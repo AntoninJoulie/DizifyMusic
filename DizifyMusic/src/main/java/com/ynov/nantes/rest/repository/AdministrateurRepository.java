@@ -16,6 +16,6 @@ public interface AdministrateurRepository extends JpaRepository<Administrateur, 
      * @param adminId l'id
      * @return un admin
      */
-    @Query("SELECT a FROM  Administrateur a WHERE a.adminId LIKE :adminId")
+    @Query("SELECT a FROM  Administrateur a WHERE a.email LIKE :email")
     public Optional<Administrateur> findById(@Param("adminId") Integer adminId);
 }

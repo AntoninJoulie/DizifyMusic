@@ -86,3 +86,6 @@ buck-out/
 
 # Bdd
 /src/main/resources/
+
+# Bdd
+/src/main/resources/

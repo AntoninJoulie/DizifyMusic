@@ -31,8 +31,8 @@ public class ArtisteController {
     }
 
     @ResponseBody
-    @GetMapping("/artiste/{id}")
-    public Artiste getArtisteById(final @PathVariable("id") Integer artisteId) {
+    @GetMapping("/artiste/{artisteId}")
+    public Artiste getArtisteById(final @PathVariable("artisteId") Integer artisteId) {
         try {
             Optional<Artiste> artiste = artisteRepository.findById(Integer.valueOf(artisteId));
             return artiste.get();

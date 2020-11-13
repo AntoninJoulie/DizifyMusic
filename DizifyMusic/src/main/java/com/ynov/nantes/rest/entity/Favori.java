@@ -15,23 +15,23 @@ public class Favori {
 
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(name = "artisteFavori",
-            joinColumns = @JoinColumn(name = "artisteId", referencedColumnName = "artisteId"),
-            inverseJoinColumns = @JoinColumn(name = "favoriId",
-                    referencedColumnName = "favoriId"))
+            joinColumns = @JoinColumn(name = "favoriId", referencedColumnName = "favoriId"),
+            inverseJoinColumns = @JoinColumn(name = "artisteId",
+                    referencedColumnName = "artisteId"))
     private List<Artiste> artistes;
 
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(name = "albumFavori",
-            joinColumns = @JoinColumn(name = "albumId", referencedColumnName = "albumId"),
-            inverseJoinColumns = @JoinColumn(name = "favoriId",
-                    referencedColumnName = "favoriId"))
+            joinColumns = @JoinColumn(name = "favoriId", referencedColumnName = "favoriId"),
+            inverseJoinColumns = @JoinColumn(name = "albumId",
+                    referencedColumnName = "albumId"))
     private List<Album> albums;
 
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(name = "titreFavori",
-            joinColumns = @JoinColumn(name = "titreId", referencedColumnName = "titreId"),
-            inverseJoinColumns = @JoinColumn(name = "favoriId",
-                    referencedColumnName = "favoriId"))
+            joinColumns = @JoinColumn(name = "favoriId", referencedColumnName = "favoriId"),
+            inverseJoinColumns = @JoinColumn(name = "titreId",
+                    referencedColumnName = "titreId"))
     private List<Titre> titres;
 
     @OneToOne

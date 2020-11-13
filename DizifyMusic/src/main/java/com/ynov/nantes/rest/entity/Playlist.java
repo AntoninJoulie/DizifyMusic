@@ -15,7 +15,11 @@ public class Playlist {
 
     private String playlistNom;
 
-    @ManyToMany
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(name = "titrePlaylist",
+            joinColumns = @JoinColumn(name = "playlistId", referencedColumnName = "playlistId"),
+            inverseJoinColumns = @JoinColumn(name = "titreId",
+                    referencedColumnName = "titreId"))
     private List<Titre> titres;
 
     @ManyToOne

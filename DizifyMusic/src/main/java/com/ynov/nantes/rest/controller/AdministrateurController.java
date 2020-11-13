@@ -27,8 +27,8 @@ public class AdministrateurController {
     }
 
     @ResponseBody
-    @GetMapping("/admin/{id}")
-    public Administrateur getAdminById(final @PathVariable("id") Integer adminId) {
+    @GetMapping("/admin/{adminId}")
+    public Administrateur getAdminById(final @PathVariable("adminId") Integer adminId) {
         try {
             Optional<Administrateur> administrateur = administrateurRepository.findById(Integer.valueOf(adminId));
             return administrateur.get();
@@ -37,8 +37,8 @@ public class AdministrateurController {
         }
     }
 
-    @DeleteMapping("/admin/{id}")
-    public void deleteAdmin(final @PathVariable("id") Integer adminId) {
+    @DeleteMapping("/admin/{adminId}")
+    public void deleteAdmin(final @PathVariable("adminId") Integer adminId) {
         administrateurRepository.deleteById(adminId);
     }
 
@@ -53,7 +53,7 @@ public class AdministrateurController {
     }
 
     @ResponseBody
-    @PutMapping("/admin/{id}")
+    @PutMapping("/admin/{adminId}")
     public Administrateur editAdministrateur(@RequestBody Administrateur administrateur) {
         return administrateurRepository.save(administrateur);
     }
