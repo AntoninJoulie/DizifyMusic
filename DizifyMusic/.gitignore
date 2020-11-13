@@ -83,3 +83,6 @@ buck-out/
 
 # CocoaPods
 /ios/Pods/
+
+# Bdd
+/src/main/resources/
