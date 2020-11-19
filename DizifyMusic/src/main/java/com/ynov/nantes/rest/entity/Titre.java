@@ -16,15 +16,15 @@ public class Titre {
 
     private String titre_nom;
 
-    private Time titre_duree;
+    private String duree;
 
     @ManyToOne
     @JoinColumn(name="artiste_id")
-    private Artiste artistes;
+    private Artiste artiste;
 
     @ManyToOne
     @JoinColumn(name="album_id")
-    private Album albums;
+    private Album album;
 
     public Integer getTitreId() {
         return titre_id;
@@ -42,27 +42,27 @@ public class Titre {
         this.titre_nom = titre_nom;
     }
 
-    public Time getTitreDuree() {
-        return titre_duree;
+    public String getTitreDuree() {
+        return duree;
     }
 
-    public void setTitreDuree(Time titre_duree) {
-        this.titre_duree = titre_duree;
+    public void setTitreDuree(String duree) {
+        this.duree = duree;
     }
 
-    public Artiste getArtistes() {
-        return artistes;
+    public Artiste getArtiste() {
+        return artiste;
     }
 
-    public void setArtistes(Artiste artistes) {
-        this.artistes = artistes;
+    public void setArtiste(Artiste artiste) {
+        this.artiste = artiste;
     }
 
-    public Album getAlbums() {
-        return albums;
+    public Album getAlbum() {
+        return album;
     }
 
-    public void setAlbums(Album albums) {
-        this.albums = albums;
+    public void setAlbum(Album album) {
+        this.album = album;
     }
 }

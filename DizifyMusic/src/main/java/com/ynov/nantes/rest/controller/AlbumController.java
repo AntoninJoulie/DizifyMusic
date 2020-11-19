@@ -1,6 +1,7 @@
 package com.ynov.nantes.rest.controller;
 
 import com.ynov.nantes.rest.entity.Album;
+import com.ynov.nantes.rest.entity.Artiste;
 import com.ynov.nantes.rest.repository.AlbumRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -50,8 +51,12 @@ public class AlbumController {
 
     @ResponseBody
     @PutMapping("/album/{album_id}")
-    public Album editAlbum(@RequestBody Album album) {
-        Album updatedAlbum= albumRepository.save(album);
+    public Album editAlbum(@RequestBody Album album, @PathVariable("album_id") Integer album_id) {
+        Album updateAlbum = albumRepository.findById(album_id).get();
+        updateAlbum.setAlbumNom(album.getAlbumNom());
+        updateAlbum.setDate(album.getDate());
+        updateAlbum.setArtiste(album.getArtiste());
+        final Album updatedAlbum = albumRepository.save(updateAlbum);
         return updatedAlbum;
     }
 
