@@ -30,7 +30,7 @@ CREATE TABLE `titre`
 (
     `titre_id` INT(10) NOT NULL AUTO_INCREMENT,
     `titre_nom` VARCHAR(50) NOT NULL,
-    `duree` TIME NOT NULL,
+    `duree` VARCHAR(50) NOT NULL,
     `artiste_id` INT(10) NOT NULL,
     `album_id` INT(10) NOT NULL,
     PRIMARY KEY(`titre_id`),
@@ -43,6 +43,7 @@ CREATE TABLE `utilisateur`
 (
     `utilisateur_id` INT(10) NOT NULL AUTO_INCREMENT,
     `email` VARCHAR(50) NOT NULL,
+    `is_admin` BOOLEAN NOT NULL,
     PRIMARY KEY(`utilisateur_id`)
 ) ENGINE=INNODB CHARACTER SET utf8 COLLATE utf8_general_ci;
 

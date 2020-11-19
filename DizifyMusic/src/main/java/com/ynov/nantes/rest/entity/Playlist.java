@@ -1,8 +1,9 @@
 package com.ynov.nantes.rest.entity;
 
-import java.util.HashSet;
-import java.util.List;
+
+
 import java.util.Set;
+
 
 import javax.persistence.*;
 
@@ -18,9 +19,8 @@ public class Playlist {
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(name = "titre_playlist",
             joinColumns = @JoinColumn(name = "playlist_id", referencedColumnName = "playlist_id"),
-            inverseJoinColumns = @JoinColumn(name = "titre_id",
-                    referencedColumnName = "titre_id"))
-    private List<Titre> titres;
+            inverseJoinColumns = @JoinColumn(name = "titre_id", referencedColumnName = "titre_id"))
+    private Set<Titre> titres;
 
     @ManyToOne
     @JoinColumn(name="utilisateur_id")
@@ -42,11 +42,11 @@ public class Playlist {
         this.playlist_nom = playlist_nom;
     }
 
-    public List<Titre> getTitres() {
+    public Set<Titre> getTitres() {
         return titres;
     }
 
-    public void setTitres(List<Titre> titres) {
+    public void setTitres(Set<Titre> titres) {
         this.titres = titres;
     }
 

@@ -1,7 +1,6 @@
 package com.ynov.nantes.rest.controller;
 
 import com.ynov.nantes.rest.entity.Album;
-import com.ynov.nantes.rest.entity.Artiste;
 import com.ynov.nantes.rest.repository.AlbumRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
