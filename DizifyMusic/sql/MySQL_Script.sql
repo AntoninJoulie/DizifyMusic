@@ -57,10 +57,10 @@ CREATE TABLE `favori`
 ) ENGINE=INNODB CHARACTER SET utf8 COLLATE utf8_general_ci;
 
 DROP TABLE IF EXISTS `artiste_favori`;
-CREATE TABLE `artist_favori`
+CREATE TABLE `artiste_favori`
 (
     `favori_id` INT(10) NOT NULL,
-    `artiste_id` INT(10) NOT NULL,
+    `artiste_id` INT(10),
     PRIMARY KEY (`favori_id`, `artiste_id`),
     FOREIGN KEY (`favori_id`) REFERENCES `favori` (`favori_id`),
     FOREIGN KEY (`artiste_id`) REFERENCES `artiste` (`artiste_id`)
@@ -70,7 +70,7 @@ DROP TABLE IF EXISTS `album_favori`;
 CREATE TABLE `album_favori`
 (
     `favori_id` INT(10) NOT NULL,
-    `album_id` INT(10) NOT NULL,
+    `album_id` INT(10),
     PRIMARY KEY (`favori_id`, `album_id`),
     FOREIGN KEY (`favori_id`) REFERENCES `favori` (`favori_id`),
     FOREIGN KEY (`album_id`) REFERENCES `album` (`album_id`)
@@ -80,7 +80,7 @@ DROP TABLE IF EXISTS `titre_favori`;
 CREATE TABLE `titre_favori`
 (
     `favori_id` INT(10) NOT NULL,
-    `titre_id` INT(10) NOT NULL,
+    `titre_id` INT(10),
     PRIMARY KEY (`favori_id`, `titre_id`),
     FOREIGN KEY (`favori_id`) REFERENCES `favori` (`favori_id`),
     FOREIGN KEY (`titre_id`) REFERENCES `titre` (`titre_id`)

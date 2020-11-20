@@ -1,10 +1,5 @@
 package com.ynov.nantes.rest.entity;
 
-import java.sql.Time;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
-
 import javax.persistence.*;
 
 @Entity

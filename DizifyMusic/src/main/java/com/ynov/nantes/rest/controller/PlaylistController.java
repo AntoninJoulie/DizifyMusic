@@ -15,7 +15,6 @@ import java.util.Set;
 public class PlaylistController {
 
     private PlaylistRepository playlistRepository;
-    private TitreRepository titreRepository;
 
     @Autowired
     public PlaylistController(PlaylistRepository playlistRepository) {
@@ -46,31 +45,11 @@ public class PlaylistController {
         }
     }
 
-    @ResponseBody
-    @GetMapping("/playlist/{playlist_id}/titre")
-    public Set<Titre> getPlaylistTitres(final @PathVariable("playlist_id") Integer playlist_id) {
-        try {
-            Playlist playlist = playlistRepository.findById(Integer.valueOf(playlist_id)).get();
-            return playlist.getTitres();
-        } catch (Exception e) {
-            return null;
-        }
-    }
     @PostMapping("/playlist")
     public Playlist addPlaylist(@RequestBody Playlist playlist) {
         Playlist addedPlaylist = playlistRepository.save(playlist);
         return addedPlaylist;
     }
-
-    @ResponseBody
-    @PutMapping("/playlist/{playlist_id}/titre/{titre_id}")
-    public Playlist addTitreToPlaylist(@RequestBody Titre titre, @PathVariable("playlist_id") Integer playlist_id, @PathVariable("titre_id") Integer titre_id) {
-        Playlist listTitresPlaylist = playlistRepository.findById(Integer.valueOf(playlist_id)).get();
-        Titre updateTitrePlaylist = titreRepository.findById(Integer.valueOf(titre_id)).get();
-        Integer updatedTitrePlaylist = updateTitrePlaylist.getTitreId();
-        listTitresPlaylist.getTitres().add(titre);
-        return listTitresPlaylist;
-    };
 
     @ResponseBody
     @PutMapping("/playlist/{playlist_id}")

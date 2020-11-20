@@ -2,6 +2,7 @@ package com.ynov.nantes.rest.entity;
 
 
 
+import java.util.List;
 import java.util.Set;
 
 
@@ -16,11 +17,11 @@ public class Playlist {
 
     private String playlist_nom;
 
-    @ManyToMany(cascade = CascadeType.ALL)
+    @ManyToMany(cascade = CascadeType.MERGE)
     @JoinTable(name = "titre_playlist",
             joinColumns = @JoinColumn(name = "playlist_id", referencedColumnName = "playlist_id"),
             inverseJoinColumns = @JoinColumn(name = "titre_id", referencedColumnName = "titre_id"))
-    private Set<Titre> titres;
+    private List<Titre> titres;
 
     @ManyToOne
     @JoinColumn(name="utilisateur_id")
@@ -42,11 +43,11 @@ public class Playlist {
         this.playlist_nom = playlist_nom;
     }
 
-    public Set<Titre> getTitres() {
+    public List<Titre> getTitres() {
         return titres;
     }
 
-    public void setTitres(Set<Titre> titres) {
+    public void setTitres(List<Titre> titres) {
         this.titres = titres;
     }
 

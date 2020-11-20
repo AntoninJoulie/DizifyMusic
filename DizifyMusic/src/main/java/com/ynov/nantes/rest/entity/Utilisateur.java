@@ -19,6 +19,10 @@ public class Utilisateur {
 
     private Boolean is_admin;
 
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "favori_id", referencedColumnName = "favori_id")
+    private Favori favori;
+
     public Integer getUtilisateurId() {
         return utilisateur_id;
     }
@@ -41,5 +45,13 @@ public class Utilisateur {
 
     public void setIs_admin(Boolean is_admin) {
         this.is_admin = is_admin;
+    }
+
+    public Favori getFavori() {
+        return favori;
+    }
+
+    public void setFavori(Favori favori) {
+        this.favori = favori;
     }
 }

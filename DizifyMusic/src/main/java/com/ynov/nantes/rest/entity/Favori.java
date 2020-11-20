@@ -13,30 +13,29 @@ public class Favori {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer favori_id;
 
-    @ManyToMany(cascade = CascadeType.ALL)
+    @ManyToMany(cascade = CascadeType.MERGE)
     @JoinTable(name = "artiste_favori",
             joinColumns = @JoinColumn(name = "favori_id", referencedColumnName = "favori_id"),
             inverseJoinColumns = @JoinColumn(name = "artiste_id",
                     referencedColumnName = "artiste_id"))
     private List<Artiste> artistes;
 
-    @ManyToMany(cascade = CascadeType.ALL)
+    @ManyToMany(cascade = CascadeType.MERGE)
     @JoinTable(name = "album_favori",
             joinColumns = @JoinColumn(name = "favori_id", referencedColumnName = "favori_id"),
             inverseJoinColumns = @JoinColumn(name = "album_id",
                     referencedColumnName = "album_id"))
     private List<Album> albums;
 
-    @ManyToMany(cascade = CascadeType.ALL)
+    @ManyToMany(cascade = CascadeType.MERGE)
     @JoinTable(name = "titre_favori",
             joinColumns = @JoinColumn(name = "favori_id", referencedColumnName = "favori_id"),
             inverseJoinColumns = @JoinColumn(name = "titre_id",
                     referencedColumnName = "titre_id"))
     private List<Titre> titres;
 
-    @OneToOne
-    @JoinColumn(name = "utilisateur_id")
-    private Utilisateur utilisateurs;
+    @OneToOne(mappedBy = "favori")
+    private Utilisateur utilisateur;
 
     public Integer getFavoriId() {
         return favori_id;
@@ -70,11 +69,11 @@ public class Favori {
         this.titres = titres;
     }
 
-    public Utilisateur getUtilisateurs() {
-        return utilisateurs;
+    public Utilisateur getUtilisateur() {
+        return utilisateur;
     }
 
-    public void setUtilisateurs(Utilisateur utilisateurs) {
-        this.utilisateurs = utilisateurs;
+    public void setUtilisateur(Utilisateur utilisateur) {
+        this.utilisateur = utilisateur;
     }
 }
