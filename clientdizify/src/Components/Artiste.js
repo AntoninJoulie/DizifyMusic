@@ -21,6 +21,7 @@ import Remove from "@material-ui/icons/Remove";
 import SaveAlt from "@material-ui/icons/SaveAlt";
 import Search from "@material-ui/icons/Search";
 import ViewColumn from "@material-ui/icons/ViewColumn";
+import FavoriteIcon from '@material-ui/icons/Favorite';
 import Alert from "@material-ui/lab/Alert"
 
 const tableIcons = {
@@ -45,11 +46,12 @@ const tableIcons = {
   SortArrow: forwardRef((props, ref) => <ArrowDownward {...props} ref={ref} />),
   ThirdStateCheck: forwardRef((props, ref) => <Remove {...props} ref={ref} />),
   ViewColumn: forwardRef((props, ref) => <ViewColumn {...props} ref={ref} />),
+  FavoriteIcon: forwardRef((props, ref) => <FavoriteIcon {...props} ref={ref} />),
 };
 
 export default function Artiste() {
   var columns = [
-    { title: "artisteId", field: "artisteId", hidden: true },
+    { title: "artisteId", field: "artisteId" },
     {
       title: "Avatar",
       render: (rowData) => (
@@ -162,7 +164,7 @@ export default function Artiste() {
   };
 
   return (
-    <div className="Artiste">
+    <div className="marginTopTable">
       
       <Grid container spacing={1}>
           <Grid item xs={3}></Grid>

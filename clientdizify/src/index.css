@@ -1,13 +1,97 @@
 body {
   margin: 0;
+  width: 90%;
+  height: 100vh;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: #282c34;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+.accueil {
+  text-align: center;
+  color: #fff;
+}
+
+.marginTopTable {
+  margin-top: 2em;
+}
+
+nav {
+  margin-top: 2em;
+}
+
+/* NAVIGATION */
+nav {
+  width: 80%;
+  margin: 0 auto;
+  background: #282c34;
+  padding: 50px 0;
+}
+nav a {
+  display: inline-block;
+  padding: 15px;
+  text-decoration: none;
+  color: #fff;
+  font-weight: 800;
+  text-transform: uppercase;
+  margin: 0 10px;
+}
+nav a,
+nav a:after,
+nav a:before {
+  transition: all .5s;
+}
+nav a:hover {
+  color: #fff;
+}
+
+nav.stroke a,
+nav.fill a {
+  position: relative;
+}
+nav.stroke a:after,
+nav.fill a:after {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  width: 0%;
+  content: '.';
+  color: transparent;
+  background: #fff;
+  height: 1px;
+}
+nav.stroke a:hover:after {
+  width: 100%;
+}
+
+nav.fill a {
+  transition: all 2s;
+}
+
+nav.fill a:after {
+  text-align: left;
+  content: '.';
+  margin: 0;
+  opacity: 0;
+}
+nav.fill a:hover {
+  color: #fff;
+  z-index: 1;
+}
+nav.fill a:hover:after {
+  z-index: -10;
+  animation: fill 1s forwards;
+  -webkit-animation: fill 1s forwards;
+  -moz-animation: fill 1s forwards;
+  opacity: 1;
 }
