@@ -15,7 +15,7 @@ export default function App() {
   return (
     <Router>
       <div>
-        <nav>
+        <nav className="fill">
           <Link to="/">Home</Link>
           <Link to="/artistes">Artistes</Link>
           <Link to="/albums">Albums</Link>
@@ -50,5 +50,10 @@ export default function App() {
 }
 
 function Home() {
-  return <h2>Home</h2>;
+  return (
+    <div className="accueil">
+      <h1>TP API REST - CAMBERT Killian & JOULIE Antonin</h1>
+      <h3>Vous pouvez accéder aux différentes tables via la barre de navigation au dessus, vous êtes actuellement sur HOME</h3>
+    </div>
+  );
 }
